@@ -1,9 +1,27 @@
-import requests
+months = [
+    {"id": 1, "name": "January"},
+    {"id": 2, "name": "Febuary"},
+    {"id": 3, "name": "March"},
+    {"id": 4, "name": "April"},
+    {"id": 5, "name": "May"},
+    {"id": 6, "name": "June"},
+    {"id": 7, "name": "July"},
+    {"id": 8, "name": "Agust"},
+    {"id": 9, "name": "September"},
+    {"id": 10, "name": "Oktober"},
+    {"id": 11, "name": "November"},
+    {"id": 12, "name": "December"},
+]
 
-def main():
-    response = requests.get('https://httpbin.org/ip')
-    if response.status_code == 200:
-        print('Your IP is', response.json()['origin'])
+@app.route("/", methods=["GET"])
+def get_months():
+    return jsonify(months)
 
-if __name__ == '__main__':
-    main()
+@app.route("/", methods=["POST"])
+def post_months():
+    return jsonify({"success": True}), 201
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+    
