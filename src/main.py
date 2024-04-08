@@ -1,3 +1,5 @@
+from flask import Flask, jsonify, abort
+
 months = [
     {"id": 1, "name": "January"},
     {"id": 2, "name": "Febuary"},
@@ -13,6 +15,8 @@ months = [
     {"id": 12, "name": "December"},
 ]
 
+app = Flask(__name__)
+
 @app.route("/", methods=["GET"])
 def get_months():
     return jsonify(months)
@@ -21,7 +25,18 @@ def get_months():
 def post_months():
     return jsonify({"success": True}), 201
 
+@app.route("/", methods=["PUT"])
+#TODO: make function for update api
+
+@app.route("/", methods=["DELETE"])
+#TODO: make function for delete api
+
+
+#TODO: make function that returns the errors 
+
+#TODO: make function for format on the return of each requests
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
-    
